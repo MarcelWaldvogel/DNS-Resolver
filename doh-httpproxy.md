@@ -2,7 +2,7 @@
 
 - `sudo vim /etc/systemd/system/doh-httpproxy@8053.service`
 
-  ```registry
+```registry
 [Unit]
 Description=DOH HTTP Proxy on 8053
 After=syslog.target network.target
@@ -20,7 +20,7 @@ WantedBy=multi-user.target
 
 - `sudo vim /etc/systemd/system/doh-httpproxy@8054.service`
 
-  ```registry
+```registry
 [Unit]
 Description=DOH HTTP Proxy on 8054
 After=syslog.target network.target
