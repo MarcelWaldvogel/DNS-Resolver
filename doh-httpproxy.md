@@ -2,21 +2,21 @@
 
 - `sudo vim /etc/systemd/system/doh-httpproxy@8053.service`
 
-```registry
-[Unit]
-Description=DOH HTTP Proxy on 8053
-After=syslog.target network.target
-Before=nginx.target
+  ```registry
+  [Unit]
+  Description=DOH HTTP Proxy on 8053
+  After=syslog.target network.target
+  Before=nginx.target
+  
+  [Service]
+  Type=simple
+  ExecStart=/usr/local/bin/doh-httpproxy --upstream-resolver 127.0.0.1 --listen-address=::1 --port 8053
+  Restart=always
+  User=doh-proxy
 
-[Service]
-Type=simple
-ExecStart=/usr/local/bin/doh-httpproxy --upstream-resolver 127.0.0.1 --listen-address=::1 --port 8053
-Restart=always
-User=doh-proxy
-
-[Install]
-WantedBy=multi-user.target
-```
+  [Install]
+  WantedBy=multi-user.target
+  ```
 
 - `sudo vim /etc/systemd/system/doh-httpproxy@8054.service`
 
@@ -34,7 +34,7 @@ WantedBy=multi-user.target
 
   [Install]
   WantedBy=multi-user.target
-```
+  ```
 
 - `sudo systemctl daemon-reload`
 - `sudo systemctl enable doh-httpproxy@8053`
